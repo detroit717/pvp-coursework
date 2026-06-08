@@ -1,0 +1,8 @@
+/vendor/
+/node_modules/
+.env
+storage/framework/views/*.php
+storage/framework/cache/data/*
+storage/logs/*.log
+!.gitignore
+.DS_Store

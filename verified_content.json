@@ -1,0 +1,1397 @@
+[
+  {
+    "idx": 2,
+    "style": "Normal",
+    "text": "Тема: Разработка информационной системы «Управление пунктами взимания платы»"
+  },
+  {
+    "idx": 4,
+    "style": "Normal",
+    "text": "по дисциплине «Базы данных»"
+  },
+  {
+    "idx": 5,
+    "style": "Normal",
+    "text": "КУРСОВОЙ ПРОЕКТ"
+  },
+  {
+    "idx": 9,
+    "style": "Normal",
+    "text": "(наименование учебного заведения)"
+  },
+  {
+    "idx": 10,
+    "style": "Normal",
+    "text": "МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ"
+  },
+  {
+    "idx": 11,
+    "style": "Normal",
+    "text": "КУРСОВОЙ ПРОЕКТ"
+  },
+  {
+    "idx": 12,
+    "style": "Normal",
+    "text": "Разработка информационной системы"
+  },
+  {
+    "idx": 13,
+    "style": "Normal",
+    "text": "Цель курсового проекта – углубленное усвоение теоретического материала курса «Базы данных», приобрет"
+  },
+  {
+    "idx": 15,
+    "style": "Normal",
+    "text": "Курсовой проект выполняется, как правило, индивидуально. По согласованию с преподавателем может быть"
+  },
+  {
+    "idx": 17,
+    "style": "Normal",
+    "text": "Задание на курсовой проект состоит в реализации информационной системы для конкретной выбранной пред"
+  },
+  {
+    "idx": 19,
+    "style": "Normal",
+    "text": "Содержание\n\nВведение\n1. Техническое задание\n  1.1. Характеристика предметной области\n  1.2. Цель и з"
+  },
+  {
+    "idx": 20,
+    "style": "Normal",
+    "text": "Введение\n\nВ современном мире платные автомобильные дороги являются важным элементом транспортной инф"
+  },
+  {
+    "idx": 21,
+    "style": "Heading 1",
+    "text": "1. Техническое задание"
+  },
+  {
+    "idx": 22,
+    "style": "Normal",
+    "text": "1.1. Характеристика предметной области"
+  },
+  {
+    "idx": 23,
+    "style": "Normal (Web)",
+    "text": "Предметной областью разрабатываемой системы является управление инфраструктурой платных автомобильны"
+  },
+  {
+    "idx": 24,
+    "style": "Normal (Web)",
+    "text": "Каждый ПВП состоит из нескольких полос движения, которые классифицируются по типам: ручные (где опла"
+  },
+  {
+    "idx": 26,
+    "style": "Normal",
+    "text": "1.2. Цель и задачи системы"
+  },
+  {
+    "idx": 27,
+    "style": "Normal (Web)",
+    "text": "Проектное название: Информационная система «Управление Пунктами Взимания Платы» (ИС УПВП)."
+  },
+  {
+    "idx": 28,
+    "style": "Normal (Web)",
+    "text": "Внедрение ИС УПВП направлено на повышение пропускной способности пунктов оплаты, минимизацию человеч"
+  },
+  {
+    "idx": 29,
+    "style": "Normal (Web)",
+    "text": "Задачи, решаемые системой:"
+  },
+  {
+    "idx": 30,
+    "style": "Normal (Web)",
+    "text": "а) ведение единого реестра водителей, их транспортных средств и привязанных транспондеров;"
+  },
+  {
+    "idx": 31,
+    "style": "Normal (Web)",
+    "text": "б) автоматический расчет стоимости проезда на основе многофакторной тарифной сетки (учет габаритов Т"
+  },
+  {
+    "idx": 32,
+    "style": "Normal (Web)",
+    "text": "в) контроль баланса лицевых счетов водителей в режиме реального времени с блокировкой транзакций при"
+  },
+  {
+    "idx": 33,
+    "style": "Normal (Web)",
+    "text": "г) автоматическая и ручная генерация штрафов с последующим контролем их оплаты;"
+  },
+  {
+    "idx": 34,
+    "style": "Normal (Web)",
+    "text": "д) формирование аналитических дашбордов по выручке, загруженности ПВП и статистике способов оплаты."
+  },
+  {
+    "idx": 36,
+    "style": "Heading 2",
+    "text": "1.3. Автоматизируемые бизнес-процессы"
+  },
+  {
+    "idx": 37,
+    "style": "Normal (Web)",
+    "text": "В информационной системе автоматизируются следующие процессы: Регистрация проезда и тарификация. Про"
+  },
+  {
+    "idx": 38,
+    "style": "Normal (Web)",
+    "text": "Биллинг лицевых счетов. Автоматический процесс, при котором система проверяет достаточность средств "
+  },
+  {
+    "idx": 39,
+    "style": "Normal (Web)",
+    "text": "Администрирование инфраструктуры. Процесс заведения новых ПВП payment_points, конфигурации полос дви"
+  },
+  {
+    "idx": 40,
+    "style": "Normal (Web)",
+    "text": "Управление штрафными санкциями. Автоматическое создание записи в таблице fines при статусе транзакци"
+  },
+  {
+    "idx": 42,
+    "style": "Normal",
+    "text": "1.4. Характеристика пользователей"
+  },
+  {
+    "idx": 44,
+    "style": "Normal (Web)",
+    "text": "В ИС УПВП предусмотрены две основные категории пользователей:"
+  },
+  {
+    "idx": 45,
+    "style": "Normal (Web)",
+    "text": "а) Оператор ПВП. Авторизуется в системе в начале своей смены. В системе он регистрирует транзакции н"
+  },
+  {
+    "idx": 46,
+    "style": "Normal (Web)",
+    "text": "б) Администратор системы. В системе он управляет архитектурой БД: добавляет новые типы штрафов и авт"
+  },
+  {
+    "idx": 47,
+    "style": "Normal",
+    "text": "1.5. Модели бизнес-процессов в нотации BPMN"
+  },
+  {
+    "idx": 50,
+    "style": "Normal",
+    "text": "1.6. Модель вариантов использования (use-case диаграммы UML, обязательно учесть генерацию отчетов)"
+  },
+  {
+    "idx": 53,
+    "style": "Normal",
+    "text": "1.7. Требования к отчетам"
+  },
+  {
+    "idx": 54,
+    "style": "Normal (Web)",
+    "text": "Вместо статических отчетов в системе реализован интерактивный аналитический дашборд с возможностью в"
+  },
+  {
+    "idx": 55,
+    "style": "Normal (Web)",
+    "text": "а) Период анализа: дата начала (start_date) и дата окончания (end_date);"
+  },
+  {
+    "idx": 56,
+    "style": "Normal (Web)",
+    "text": "б) Фильтр по объекту: point_id (выбор конкретного ПВП или всех);"
+  },
+  {
+    "idx": 57,
+    "style": "Normal (Web)",
+    "text": "Фильтр по объекту: point_id (выбор конкретного ПВП или всех)."
+  },
+  {
+    "idx": 58,
+    "style": "Normal (Web)",
+    "text": "Выходные формы:"
+  },
+  {
+    "idx": 59,
+    "style": "Normal (Web)",
+    "text": "в) Визуальные графики (Chart.js): линейный график выручки по дням, круговая диаграмма распределения "
+  },
+  {
+    "idx": 60,
+    "style": "Normal (Web)",
+    "text": "г) Табличная форма: детализация транзакций (колонки: ПВП, способ оплаты, количество транзакций, обща"
+  },
+  {
+    "idx": 62,
+    "style": "Heading 2",
+    "text": "1.8. Требования к информационному обеспечению"
+  },
+  {
+    "idx": 63,
+    "style": "Normal (Web)",
+    "text": "Информационное обеспечение строится на базе реляционной модели данных. Обязательные требования:"
+  },
+  {
+    "idx": 64,
+    "style": "Normal (Web)",
+    "text": "а) нормализация БД до 3-й нормальной формы (отсутствие транзитивных зависимостей, например, привязка"
+  },
+  {
+    "idx": 65,
+    "style": "Normal (Web)",
+    "text": "б) поддержание ссылочной целостности посредством FOREIGN KEY с каскадным обновлением;"
+  },
+  {
+    "idx": 66,
+    "style": "Normal (Web)",
+    "text": "в) использование хранимых процедур и функций на языке PL/pgSQL для вычисления динамических показател"
+  },
+  {
+    "idx": 67,
+    "style": "Normal (Web)",
+    "text": "г) обеспечение атомарности транзакций (списание баланса и регистрация проезда должны выполняться в е"
+  },
+  {
+    "idx": 68,
+    "style": "Normal",
+    "text": "1.9. Требования к программному обеспечению и пользовательскому интерфейсу"
+  },
+  {
+    "idx": 69,
+    "style": "Normal (Web)",
+    "text": "Серверная часть должна быть реализована на скриптовом языке PHP версии 8.0+. СУБД – PostgreSQL верси"
+  },
+  {
+    "idx": 70,
+    "style": "Normal (Web)",
+    "text": "Пользовательский интерфейс представляет собой Single Page Application (гибридный подход с AJAX-модал"
+  },
+  {
+    "idx": 71,
+    "style": "Normal (Web)",
+    "text": "Представление данных осуществляется посредством библиотеки jQuery DataTables с поддержкой клиентской"
+  },
+  {
+    "idx": 73,
+    "style": "Heading 1",
+    "text": "2. Технический проект"
+  },
+  {
+    "idx": 74,
+    "style": "Heading 2",
+    "text": "2.1. Модели локальных представлений"
+  },
+  {
+    "idx": 75,
+    "style": "Heading 3",
+    "text": "2.1.1. Локальные ER-диаграммы (по категориям пользователей в нотации Чена)"
+  },
+  {
+    "idx": 81,
+    "style": "Heading 3",
+    "text": "2.1.2. Основные запросы (нетривиальные запросы по категориям пользователей – формулировка на естеств"
+  },
+  {
+    "idx": 82,
+    "style": "Normal (Web)",
+    "text": "Основываясь на функциях и структуре базы данных, можно выделить следующие сложные аналитические запр"
+  },
+  {
+    "idx": 83,
+    "style": "Normal (Web)",
+    "text": "Для категории «Водитель»:"
+  },
+  {
+    "idx": 84,
+    "style": "Normal (Web)",
+    "text": "Рассчитать общую сумму задолженности по всем неоплаченным штрафам для конкретного водителя (соответс"
+  },
+  {
+    "idx": 85,
+    "style": "Normal (Web)",
+    "text": "Вывести детализированную историю транзакций водителя за определенный период с указанием пункта оплат"
+  },
+  {
+    "idx": 86,
+    "style": "Normal (Web)",
+    "text": "Для категории «Менеджер/Администратор»:"
+  },
+  {
+    "idx": 87,
+    "style": "Normal (Web)",
+    "text": "Сформировать ежедневную статистику работы ПВП за заданный период: общая сумма выручки, количество тр"
+  },
+  {
+    "idx": 88,
+    "style": "Normal (Web)",
+    "text": "Вывести сводный отчет по конкретному пункту оплаты: количество транзакций и общая сумма выручки в ра"
+  },
+  {
+    "idx": 89,
+    "style": "Normal (Web)",
+    "text": "Определить топ водителей (с указанием их номеров телефонов), совершивших успешные оплаты на наибольш"
+  },
+  {
+    "idx": 90,
+    "style": "Normal (Web)",
+    "text": "Проанализировать популярность способов оплаты: количество транзакций, общая и средняя сумма чека для"
+  },
+  {
+    "idx": 92,
+    "style": "Heading 3",
+    "text": "2.1.3. Общая ER-диаграмма (в нотации Чена)"
+  },
+  {
+    "idx": 96,
+    "style": "Heading 2",
+    "text": "2.2. Концептуальная модель данных"
+  },
+  {
+    "idx": 97,
+    "style": "Heading 3",
+    "text": "2.2.1. ER-диаграмма. Общая ER-диаграмма концептуальной модели данных приведена на рисунке 1."
+  },
+  {
+    "idx": 98,
+    "style": "Heading 3",
+    "text": "2.2.2. Спецификация сущностей"
+  },
+  {
+    "idx": 100,
+    "style": "Normal",
+    "text": "Рисунок 1 - Общая ER-диаграмма концептуальной модели данных"
+  },
+  {
+    "idx": 102,
+    "style": "Normal",
+    "text": "Таблица 1 - Спецификация сущностей"
+  },
+  {
+    "idx": 103,
+    "style": "Normal",
+    "text": "Примечание: В соответствии с реализованной базой данных состав сущностей включает: Водитель (drivers"
+  },
+  {
+    "idx": 105,
+    "style": "Normal",
+    "text": "2.2.3. Спецификация связей"
+  },
+  {
+    "idx": 106,
+    "style": "Normal",
+    "text": "Связи между сущностями обеспечивают ссылочную целостность данных в системе управления ПВП. В таблице"
+  },
+  {
+    "idx": 108,
+    "style": "Normal",
+    "text": "Таблица 2 - Спецификация связей"
+  },
+  {
+    "idx": 110,
+    "style": "Normal",
+    "text": "Таблица 3 - продолжение таблицы 2"
+  },
+  {
+    "idx": 111,
+    "style": "Normal",
+    "text": "2.2.4. Спецификация доменов"
+  },
+  {
+    "idx": 112,
+    "style": "Normal (Web)",
+    "text": "Домены определяют допустимые типы и диапазоны значений для атрибутов системы. Поскольку в PostgreSQL"
+  },
+  {
+    "idx": 113,
+    "style": "Normal",
+    "text": "Таблица 4 - Спецификация доменов"
+  },
+  {
+    "idx": 116,
+    "style": "Heading 2",
+    "text": "2.3. Логическая модель данных"
+  },
+  {
+    "idx": 117,
+    "style": "Heading 3",
+    "text": "2.3.1. Диаграмма логической модели"
+  },
+  {
+    "idx": 121,
+    "style": "Heading 3",
+    "text": "2.3.2. Спецификация реляционных отношений"
+  },
+  {
+    "idx": 122,
+    "style": "Normal",
+    "text": "Спецификация реляционных отношений представлена в таблице 4:"
+  },
+  {
+    "idx": 123,
+    "style": "Caption",
+    "text": "Таблица 5 - Спецификация реалиционных отношений"
+  },
+  {
+    "idx": 125,
+    "style": "Caption",
+    "text": "Таблица 6 - продолжение таблицы 5"
+  },
+  {
+    "idx": 127,
+    "style": "Heading 2",
+    "text": "2.4. Физическая модель данных"
+  },
+  {
+    "idx": 128,
+    "style": "Heading 3",
+    "text": "2.4.1. Обоснование выбора СУБД"
+  },
+  {
+    "idx": 129,
+    "style": "Normal (Web)",
+    "text": "Для реализации проекта выбрана объектно-реляционная СУБД PostgreSQL 16.13. Данный выбор обоснован сл"
+  },
+  {
+    "idx": 130,
+    "style": "Normal (Web)",
+    "text": "а) Богатый функционал серверного программирования на языке pgSQL, позволяющий реализовать сложную би"
+  },
+  {
+    "idx": 131,
+    "style": "Normal (Web)",
+    "text": "б) Поддержка сложных ограничений целостности (CHECK constraints), что критично для финансовых транза"
+  },
+  {
+    "idx": 132,
+    "style": "Normal (Web)",
+    "text": "в) Безупречное соответствие принципам ACID, гарантирующее надежность списаний средств."
+  },
+  {
+    "idx": 133,
+    "style": "Heading 3",
+    "text": "2.4.2. Диаграмма физической модели"
+  },
+  {
+    "idx": 135,
+    "style": "Heading 3",
+    "text": "2.4.3. Спецификация таблиц"
+  },
+  {
+    "idx": 137,
+    "style": "Heading 3",
+    "text": "2.4.4. Проектирование вторичных индексов"
+  },
+  {
+    "idx": 138,
+    "style": "Normal (Web)",
+    "text": "CREATE INDEX idx_trans_date ON transactions(datetime); — для ускорения отчетов за период."
+  },
+  {
+    "idx": 139,
+    "style": "Normal (Web)",
+    "text": "CREATE INDEX idx_veh_plate ON vehicles(plate_number); — для быстрого поиска авто оператором."
+  },
+  {
+    "idx": 141,
+    "style": "Heading 2",
+    "text": "2.5. Проектирование запросов выборки данных"
+  },
+  {
+    "idx": 142,
+    "style": "Heading 3",
+    "text": "2.5.1. Запрос №1"
+  },
+  {
+    "idx": 143,
+    "style": "Normal",
+    "text": "Найти общую сумму выручки по каждому ПВП за все время."
+  },
+  {
+    "idx": 147,
+    "style": "Normal",
+    "text": "Формулировка в виде выражения реляционной алгебры:\nR = π name, revenue (ρ pp(name, id_point) ⋈ id_po"
+  },
+  {
+    "idx": 148,
+    "style": "Normal",
+    "text": "Формулировка в виде формулы реляционного исчисления с переменными-кортежами:\n{t.name, t.revenue | ∃p"
+  },
+  {
+    "idx": 149,
+    "style": "Normal",
+    "text": "Формулировка на языке SQL:"
+  },
+  {
+    "idx": 150,
+    "style": "Normal",
+    "text": "SELECT pp.name, SUM(t.amount) AS revenue"
+  },
+  {
+    "idx": 151,
+    "style": "Normal",
+    "text": "FROM payment_points pp"
+  },
+  {
+    "idx": 152,
+    "style": "Normal",
+    "text": "JOIN transactions t ON pp.id_point = t.id_point"
+  },
+  {
+    "idx": 153,
+    "style": "Normal",
+    "text": "WHERE t.status = 'успешно'"
+  },
+  {
+    "idx": 154,
+    "style": "Normal",
+    "text": "GROUP BY pp.name;"
+  },
+  {
+    "idx": 155,
+    "style": "Normal",
+    "text": "Результат выполнения запроса №1 приведен на рисунке 2."
+  },
+  {
+    "idx": 158,
+    "style": "Normal",
+    "text": "Рисунок 2 - Результат выполнения запроса №1"
+  },
+  {
+    "idx": 162,
+    "style": "Heading 3",
+    "text": "2.5.2. Запрос №2"
+  },
+  {
+    "idx": 163,
+    "style": "Normal",
+    "text": "Вывести список водителей, у которых сумма неоплаченных штрафов превышает 1000 рублей."
+  },
+  {
+    "idx": 167,
+    "style": "Normal",
+    "text": "Формулировка в виде выражения реляционной алгебры:\nR = π full_name, debt (σ debt > 1000 (γ id_driver"
+  },
+  {
+    "idx": 168,
+    "style": "Normal",
+    "text": "Формулировка в виде формулы реляционного исчисления с переменными-кортежами:\n{t.full_name, t.debt | "
+  },
+  {
+    "idx": 169,
+    "style": "Normal",
+    "text": "Формулировка на языке SQL"
+  },
+  {
+    "idx": 170,
+    "style": "Normal",
+    "text": "SELECT d.full_name, SUM(f.amount) as debt"
+  },
+  {
+    "idx": 171,
+    "style": "Normal",
+    "text": "FROM drivers d"
+  },
+  {
+    "idx": 172,
+    "style": "Normal",
+    "text": "JOIN fines f ON d.id_driver = f.id_driver"
+  },
+  {
+    "idx": 173,
+    "style": "Normal",
+    "text": "WHERE f.payment_status = 'неоплачен'"
+  },
+  {
+    "idx": 174,
+    "style": "Normal",
+    "text": "GROUP BY d.id_driver, d.full_name"
+  },
+  {
+    "idx": 175,
+    "style": "Normal",
+    "text": "HAVING SUM(f.amount) > 1000;"
+  },
+  {
+    "idx": 177,
+    "style": "Normal",
+    "text": "Результат выполнения запроса №2 приведен на рисунке 3."
+  },
+  {
+    "idx": 180,
+    "style": "Normal",
+    "text": "Рисунок 3 - Результат выполнения запроса №2"
+  },
+  {
+    "idx": 181,
+    "style": "Heading 3",
+    "text": "2.5.3. Запрос №3"
+  },
+  {
+    "idx": 183,
+    "style": "Normal",
+    "text": "Получить список серийных номеров активных транспондеров и государственных регистрационных номеров ав"
+  },
+  {
+    "idx": 185,
+    "style": "Normal",
+    "text": "Формулировка в виде выражения реляционной алгебры:"
+  },
+  {
+    "idx": 188,
+    "style": "Normal",
+    "text": "Формулировка в виде формулы реляционного исчисления с переменными-кортежами:"
+  },
+  {
+    "idx": 191,
+    "style": "Normal",
+    "text": "Формулировка на языке SQL"
+  },
+  {
+    "idx": 193,
+    "style": "Normal",
+    "text": "SELECT t.serial_number, v.plate_number"
+  },
+  {
+    "idx": 194,
+    "style": "Normal",
+    "text": "FROM transponders t"
+  },
+  {
+    "idx": 195,
+    "style": "Normal",
+    "text": "JOIN vehicles v ON t.id_vehicle = v.id_vehicle"
+  },
+  {
+    "idx": 196,
+    "style": "Normal",
+    "text": "WHERE t.status = 'активен';"
+  },
+  {
+    "idx": 198,
+    "style": "Normal",
+    "text": "Результат выполнения запроса №3 приведен на рисунке 4."
+  },
+  {
+    "idx": 200,
+    "style": "Normal",
+    "text": "Рисунок 4 - Результат выполнения запроса №3"
+  },
+  {
+    "idx": 203,
+    "style": "Heading 3",
+    "text": "2.5.4. Запрос №4"
+  },
+  {
+    "idx": 204,
+    "style": "Normal",
+    "text": "Вывести список водителей (ФИО), которые имеют более 1-го неоплаченного штрафа."
+  },
+  {
+    "idx": 205,
+    "style": "Normal",
+    "text": "Формулировка в виде выражения реляционной алгебры:"
+  },
+  {
+    "idx": 207,
+    "style": "Normal",
+    "text": "Формулировка в виде формулы реляционного исчисления с переменными-кортежами:"
+  },
+  {
+    "idx": 209,
+    "style": "Normal",
+    "text": "Формулировка на языке SQL:"
+  },
+  {
+    "idx": 210,
+    "style": "Normal",
+    "text": "SELECT d.full_name"
+  },
+  {
+    "idx": 211,
+    "style": "Normal",
+    "text": "FROM drivers d"
+  },
+  {
+    "idx": 212,
+    "style": "Normal",
+    "text": "JOIN fines f ON d.id_driver = f.id_driver"
+  },
+  {
+    "idx": 213,
+    "style": "Normal",
+    "text": "WHERE f.payment_status = 'неоплачен'"
+  },
+  {
+    "idx": 214,
+    "style": "Normal",
+    "text": "GROUP BY d.id_driver, d.full_name"
+  },
+  {
+    "idx": 215,
+    "style": "Normal",
+    "text": "HAVING COUNT(f.id_fine) > 3;"
+  },
+  {
+    "idx": 217,
+    "style": "Normal",
+    "text": "Результат выполнения запроса №4 приведен на рисунке 5."
+  },
+  {
+    "idx": 219,
+    "style": "Normal",
+    "text": "Рисунок 5 - Результат выполнения запроса №4"
+  },
+  {
+    "idx": 220,
+    "style": "Heading 3",
+    "text": "2.5.5. Запрос №5"
+  },
+  {
+    "idx": 221,
+    "style": "Normal",
+    "text": "Посчитать общее количество фактических полос движения для каждого существующего пункта взимания плат"
+  },
+  {
+    "idx": 222,
+    "style": "Normal",
+    "text": "Формулировка в виде выражения реляционной алгебры:"
+  },
+  {
+    "idx": 224,
+    "style": "Normal",
+    "text": "Формулировка в виде формулы реляционного исчисления с переменными-кортежами:"
+  },
+  {
+    "idx": 226,
+    "style": "Normal",
+    "text": "Формулировка на языке SQL:"
+  },
+  {
+    "idx": 228,
+    "style": "Normal",
+    "text": "SELECT p.name, COUNT(l.id_lane) as active_lanes"
+  },
+  {
+    "idx": 229,
+    "style": "Normal",
+    "text": "FROM payment_points p"
+  },
+  {
+    "idx": 230,
+    "style": "Normal",
+    "text": "LEFT JOIN lanes l ON l.id_point = p.id_point"
+  },
+  {
+    "idx": 231,
+    "style": "Normal",
+    "text": "GROUP BY p.id_point, p.name"
+  },
+  {
+    "idx": 232,
+    "style": "Normal",
+    "text": "ORDER BY p.id_point;"
+  },
+  {
+    "idx": 233,
+    "style": "Normal",
+    "text": "Результат выполнения запроса №5 приведен на рисунке 6."
+  },
+  {
+    "idx": 235,
+    "style": "Normal",
+    "text": "Рисунок 6 - Результат выполнения запроса №5"
+  },
+  {
+    "idx": 236,
+    "style": "Heading 2",
+    "text": "2.6. Пользовательские представления (не менее 2-х, рекомендуется проектировать представления для реа"
+  },
+  {
+    "idx": 237,
+    "style": "Heading 3",
+    "text": "2.6.1. Представление №1"
+  },
+  {
+    "idx": 238,
+    "style": "Normal",
+    "text": "Сводная информация по водителям: их текущий личный баланс и общая сумма задолженности по неоплаченны"
+  },
+  {
+    "idx": 240,
+    "style": "Normal",
+    "text": "CREATE VIEW v_driver_financials AS"
+  },
+  {
+    "idx": 241,
+    "style": "Normal",
+    "text": "SELECT d.id_driver, d.full_name, d.personal_balance,"
+  },
+  {
+    "idx": 242,
+    "style": "Normal",
+    "text": "(SELECT COALESCE(SUM(amount), 0) FROM fines f"
+  },
+  {
+    "idx": 243,
+    "style": "Normal",
+    "text": "WHERE f.id_driver = d.id_driver AND f.payment_status = 'неоплачен') as total_debt"
+  },
+  {
+    "idx": 244,
+    "style": "Normal",
+    "text": "FROM drivers d;"
+  },
+  {
+    "idx": 246,
+    "style": "Normal",
+    "text": "Результат выполнения представления №1 приведен на рисунке 7."
+  },
+  {
+    "idx": 247,
+    "style": "Normal",
+    "text": "SELECT * FROM v_driver_financials WHERE id_driver = 16;"
+  },
+  {
+    "idx": 249,
+    "style": "Normal",
+    "text": "Рисунок 7 - Результат выполнения представления №1"
+  },
+  {
+    "idx": 254,
+    "style": "Heading 3",
+    "text": "2.6.2. Представление №2"
+  },
+  {
+    "idx": 255,
+    "style": "Normal",
+    "text": "Детализированный отчет по транзакциям с расшифровкой идентификаторов в строковые названия (имя ПВП, "
+  },
+  {
+    "idx": 256,
+    "style": "Normal",
+    "text": "CREATE VIEW v_transaction_details AS"
+  },
+  {
+    "idx": 257,
+    "style": "Normal",
+    "text": "SELECT t.id_transaction, t.datetime, pp.name as point_name, v.plate_number, pm.name as payment_metho"
+  },
+  {
+    "idx": 258,
+    "style": "Normal",
+    "text": "FROM transactions t"
+  },
+  {
+    "idx": 259,
+    "style": "Normal",
+    "text": "JOIN payment_points pp ON t.id_point = pp.id_point"
+  },
+  {
+    "idx": 260,
+    "style": "Normal",
+    "text": "JOIN vehicles v ON t.id_vehicle = v.id_vehicle"
+  },
+  {
+    "idx": 261,
+    "style": "Normal",
+    "text": "JOIN payment_methods pm ON t.id_payment_method = pm.id_payment_method;"
+  },
+  {
+    "idx": 263,
+    "style": "Heading 2",
+    "text": "2.7. Архитектура информационной системы"
+  },
+  {
+    "idx": 264,
+    "style": "Heading 3",
+    "text": "2.7.1. Диаграмма компонентов"
+  },
+  {
+    "idx": 265,
+    "style": "Normal",
+    "text": "Диаграмма компонентов ИС УПВП представлена на рисунке. Система включает три компонента: веб-браузер "
+  },
+  {
+    "idx": 266,
+    "style": "Heading 3",
+    "text": "2.7.2. Спецификация компонентов"
+  },
+  {
+    "idx": 267,
+    "style": "Normal",
+    "text": "В таблице 4 приведена детальная спецификация каждого компонента системы."
+  },
+  {
+    "idx": 269,
+    "style": "Normal",
+    "text": "Таблица 7 - Спецификация компонентов"
+  },
+  {
+    "idx": 271,
+    "style": "Heading 3",
+    "text": "2.7.3. Распределение бизнес-логики между компонентами"
+  },
+  {
+    "idx": 273,
+    "style": "Normal (Web)",
+    "text": "Логика системы распределена следующим образом:"
+  },
+  {
+    "idx": 274,
+    "style": "Normal (Web)",
+    "text": "1) Клиентский уровень: отвечает за представление данных и первичную валидацию (проверка заполнения п"
+  },
+  {
+    "idx": 275,
+    "style": "Normal (Web)",
+    "text": "2) Сервер приложений: выполняет роль связующего звена. Формирует SQL-запросы на основе действий поль"
+  },
+  {
+    "idx": 276,
+    "style": "Normal (Web)",
+    "text": "3) Уровень базы данных: в данной системе реализована стратегия «толстой базы». Критическая бизнес-ло"
+  },
+  {
+    "idx": 278,
+    "style": "Normal",
+    "text": "2.7.4. Интерфейсы взаимодействия компонентов"
+  },
+  {
+    "idx": 279,
+    "style": "Normal (Web)",
+    "text": "а) Интерфейс UI – Server: взаимодействие происходит по протоколу HTTPS. Данные передаются в формате "
+  },
+  {
+    "idx": 280,
+    "style": "Normal (Web)",
+    "text": "б) Интерфейс Server – DB: используется протокол TCP/IP (порт 5432). Взаимодействие через драйвер PDO"
+  },
+  {
+    "idx": 281,
+    "style": "Heading 2",
+    "text": "2.8. Хранимые процедуры и триггеры"
+  },
+  {
+    "idx": 282,
+    "style": "Heading 3",
+    "text": "2.8.1. Хранимая процедура №1"
+  },
+  {
+    "idx": 283,
+    "style": "Normal",
+    "text": "Регистрация нового штрафа в системе. Процедура принимает идентификаторы водителя, транспортного сред"
+  },
+  {
+    "idx": 285,
+    "style": "Normal",
+    "text": "Блок-схема алгоритма транзакции хранимой процедуры приведена на рисунке 8."
+  },
+  {
+    "idx": 291,
+    "style": "Normal",
+    "text": "Рисунок 8 - Блок-схема алгоритма хранимой процедуры add_fine"
+  },
+  {
+    "idx": 294,
+    "style": "Normal",
+    "text": "CREATE OR REPLACE FUNCTION \"add_fine\" ("
+  },
+  {
+    "idx": 295,
+    "style": "Normal",
+    "text": "IN \"p_driver_id\" integer,"
+  },
+  {
+    "idx": 296,
+    "style": "Normal",
+    "text": "IN \"p_vehicle_id\" integer,"
+  },
+  {
+    "idx": 297,
+    "style": "Normal",
+    "text": "IN \"p_fine_type_id\" integer,"
+  },
+  {
+    "idx": 298,
+    "style": "Normal",
+    "text": "IN \"p_amount\" numeric,"
+  },
+  {
+    "idx": 299,
+    "style": "Normal",
+    "text": "IN \"p_comment\" text"
+  },
+  {
+    "idx": 300,
+    "style": "Normal",
+    "text": ") RETURNS int4 LANGUAGE plpgsql AS '"
+  },
+  {
+    "idx": 301,
+    "style": "Normal",
+    "text": "DECLARE"
+  },
+  {
+    "idx": 302,
+    "style": "Normal",
+    "text": "new_fine_id INT;"
+  },
+  {
+    "idx": 303,
+    "style": "Normal",
+    "text": "BEGIN"
+  },
+  {
+    "idx": 304,
+    "style": "Normal",
+    "text": "INSERT INTO fines (id_driver, id_vehicle, id_fine_type, amount, datetime, payment_status, comment)"
+  },
+  {
+    "idx": 305,
+    "style": "Normal",
+    "text": "VALUES (p_driver_id, p_vehicle_id, p_fine_type_id, p_amount, NOW(), ''неоплачен'', p_comment)"
+  },
+  {
+    "idx": 306,
+    "style": "Normal",
+    "text": "RETURNING id_fine INTO new_fine_id;"
+  },
+  {
+    "idx": 307,
+    "style": "Normal",
+    "text": "RETURN new_fine_id;"
+  },
+  {
+    "idx": 308,
+    "style": "Normal",
+    "text": "END;"
+  },
+  {
+    "idx": 309,
+    "style": "Normal",
+    "text": "';"
+  },
+  {
+    "idx": 311,
+    "style": "Heading 3",
+    "text": "2.8.2. Триггер №1"
+  },
+  {
+    "idx": 312,
+    "style": "Normal",
+    "text": "Блок-схема алгоритма работы триггера автоматического начисления штрафа приведена на рисунке 9."
+  },
+  {
+    "idx": 314,
+    "style": "Normal",
+    "text": "Рисунок 9 - Блок-схема алгоритма работы триггера автоматического начисления штрафа"
+  },
+  {
+    "idx": 319,
+    "style": "Normal",
+    "text": "Код триггера и функции"
+  },
+  {
+    "idx": 320,
+    "style": "Normal",
+    "text": "-- Функция триггера"
+  },
+  {
+    "idx": 321,
+    "style": "Normal",
+    "text": "CREATE OR REPLACE FUNCTION \"auto_fine_for_non_payment\" () RETURNS trigger LANGUAGE plpgsql AS '"
+  },
+  {
+    "idx": 322,
+    "style": "Normal",
+    "text": "BEGIN"
+  },
+  {
+    "idx": 323,
+    "style": "Normal",
+    "text": "IF NEW.status = ''неоплата'' THEN"
+  },
+  {
+    "idx": 324,
+    "style": "Normal",
+    "text": "INSERT INTO fines (id_driver, id_vehicle, id_transaction, id_point, id_fine_type, amount, datetime, "
+  },
+  {
+    "idx": 325,
+    "style": "Normal",
+    "text": "SELECT"
+  },
+  {
+    "idx": 326,
+    "style": "Normal",
+    "text": "v.id_driver,"
+  },
+  {
+    "idx": 327,
+    "style": "Normal",
+    "text": "NEW.id_vehicle,"
+  },
+  {
+    "idx": 328,
+    "style": "Normal",
+    "text": "NEW.id_transaction,"
+  },
+  {
+    "idx": 329,
+    "style": "Normal",
+    "text": "NEW.id_point,"
+  },
+  {
+    "idx": 330,
+    "style": "Normal",
+    "text": "1,"
+  },
+  {
+    "idx": 331,
+    "style": "Normal",
+    "text": "500.00,"
+  },
+  {
+    "idx": 332,
+    "style": "Normal",
+    "text": "NOW(),"
+  },
+  {
+    "idx": 333,
+    "style": "Normal",
+    "text": "''неоплачен'',"
+  },
+  {
+    "idx": 334,
+    "style": "Normal",
+    "text": "''Автоматический штраф за неоплату проезда''"
+  },
+  {
+    "idx": 335,
+    "style": "Normal",
+    "text": "FROM vehicles v"
+  },
+  {
+    "idx": 336,
+    "style": "Normal",
+    "text": "WHERE v.id_vehicle = NEW.id_vehicle;"
+  },
+  {
+    "idx": 337,
+    "style": "Normal",
+    "text": "END IF;"
+  },
+  {
+    "idx": 338,
+    "style": "Normal",
+    "text": "RETURN NEW;"
+  },
+  {
+    "idx": 339,
+    "style": "Normal",
+    "text": "END;"
+  },
+  {
+    "idx": 340,
+    "style": "Normal",
+    "text": "';"
+  },
+  {
+    "idx": 342,
+    "style": "Normal",
+    "text": "-- Определение триггера"
+  },
+  {
+    "idx": 343,
+    "style": "Normal",
+    "text": "CREATE TRIGGER \"trg_auto_fine\""
+  },
+  {
+    "idx": 344,
+    "style": "Normal",
+    "text": "AFTER INSERT ON \"transactions\""
+  },
+  {
+    "idx": 345,
+    "style": "Normal",
+    "text": "FOR EACH ROW EXECUTE FUNCTION auto_fine_for_non_payment();"
+  },
+  {
+    "idx": 346,
+    "style": "Heading 3",
+    "text": "2.8.3 Триггер №2"
+  },
+  {
+    "idx": 347,
+    "style": "Normal (Web)",
+    "text": "Предварительная проверка баланса перед совершением оплаты через транспондер. Перед вставкой новой тр"
+  },
+  {
+    "idx": 348,
+    "style": "Normal (Web)",
+    "text": "Блок-схема алгоритма транзакции оплаты через транспондер приведена на рисунке 10."
+  },
+  {
+    "idx": 350,
+    "style": "Normal",
+    "text": "Рисунок 10 - Блок-схема алгоритма транзакции оплаты через транспондер"
+  },
+  {
+    "idx": 352,
+    "style": "Normal",
+    "text": "Код триггера и функции:"
+  },
+  {
+    "idx": 353,
+    "style": "Normal",
+    "text": "-- Функция триггера"
+  },
+  {
+    "idx": 354,
+    "style": "Normal",
+    "text": "CREATE OR REPLACE FUNCTION \"check_balance_before_transaction\" () RETURNS trigger LANGUAGE plpgsql AS"
+  },
+  {
+    "idx": 355,
+    "style": "Normal",
+    "text": "DECLARE"
+  },
+  {
+    "idx": 356,
+    "style": "Normal",
+    "text": "driver_balance NUMERIC;"
+  },
+  {
+    "idx": 357,
+    "style": "Normal",
+    "text": "BEGIN"
+  },
+  {
+    "idx": 358,
+    "style": "Normal",
+    "text": "IF NEW.id_payment_method = 3 THEN"
+  },
+  {
+    "idx": 359,
+    "style": "Normal",
+    "text": "SELECT personal_balance INTO driver_balance"
+  },
+  {
+    "idx": 360,
+    "style": "Normal",
+    "text": "FROM drivers"
+  },
+  {
+    "idx": 361,
+    "style": "Normal",
+    "text": "WHERE id_driver = (SELECT id_driver FROM vehicles WHERE id_vehicle = NEW.id_vehicle);"
+  },
+  {
+    "idx": 363,
+    "style": "Normal",
+    "text": "IF driver_balance < NEW.amount THEN"
+  },
+  {
+    "idx": 364,
+    "style": "Normal",
+    "text": "RAISE EXCEPTION ''Недостаточно средств на балансе водителя (ID: %)'',"
+  },
+  {
+    "idx": 365,
+    "style": "Normal",
+    "text": "(SELECT id_driver FROM vehicles WHERE id_vehicle = NEW.id_vehicle);"
+  },
+  {
+    "idx": 366,
+    "style": "Normal",
+    "text": "END IF;"
+  },
+  {
+    "idx": 367,
+    "style": "Normal",
+    "text": "END IF;"
+  },
+  {
+    "idx": 368,
+    "style": "Normal",
+    "text": "RETURN NEW;"
+  },
+  {
+    "idx": 369,
+    "style": "Normal",
+    "text": "END;"
+  },
+  {
+    "idx": 370,
+    "style": "Normal",
+    "text": "';"
+  },
+  {
+    "idx": 372,
+    "style": "Normal",
+    "text": "-- Определение триггера"
+  },
+  {
+    "idx": 373,
+    "style": "Normal",
+    "text": "CREATE TRIGGER \"trg_check_balance\""
+  },
+  {
+    "idx": 374,
+    "style": "Normal",
+    "text": "BEFORE INSERT ON \"transactions\""
+  },
+  {
+    "idx": 375,
+    "style": "Normal",
+    "text": "FOR EACH ROW EXECUTE FUNCTION check_balance_before_transaction();"
+  },
+  {
+    "idx": 378,
+    "style": "Normal",
+    "text": "3. Рабочий проект"
+  },
+  {
+    "idx": 379,
+    "style": "Normal",
+    "text": "3.1. SQL-скрипт создания структуры БД (ссылка на github или на приложение №1 с распечаткой скрипта)"
+  },
+  {
+    "idx": 380,
+    "style": "Normal",
+    "text": "3.2. SQL-скрипт триггеров и хранимых процедур (ссылка на github или на приложение №2 с распечаткой с"
+  },
+  {
+    "idx": 381,
+    "style": "Normal",
+    "text": "3.3. Текст программы (ссылка на github или на приложение №3 с распечаткой основных модулей программы"
+  },
+  {
+    "idx": 382,
+    "style": "Normal",
+    "text": "3.4. Руководство пользователя (ссылка на приложение №1(4))"
+  },
+  {
+    "idx": 383,
+    "style": "Normal",
+    "text": "Перечень обязательных приложений"
+  },
+  {
+    "idx": 384,
+    "style": "Normal",
+    "text": "1. SQL-скрипт создания структуры БД (может быть размещен на github)"
+  },
+  {
+    "idx": 385,
+    "style": "Normal",
+    "text": "2. SQL-скрипт создания триггеров и хранимых процедур (может быть размещен на github)"
+  },
+  {
+    "idx": 388,
+    "style": "Normal",
+    "text": "3. Текст программы (основные модули) (может быть размещен на github) \n4. Руководство пользователя (в"
+  },
+  {
+    "idx": 389,
+    "style": "Normal",
+    "text": "Автоматизированные системы. Требования к содержанию документов» - п. 3.4)"
+  }
+]

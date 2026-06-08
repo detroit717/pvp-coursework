@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>ПВП — Презентация</title>
+<style>
+@page { size: 960px 540px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'Calibri', Arial, sans-serif; background: #0a0a16; color: #e0e6f0; }
+.slide { width: 960px; height: 540px; position: relative; overflow: hidden; background: linear-gradient(135deg, #0a0a16 0%, #0f1a2e 40%, #0a0a16 100%); page-break-after: always; }
+.slide::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(30, 60, 120, 0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(20, 50, 100, 0.1) 0%, transparent 60%); pointer-events: none; }
+.content { position: relative; z-index: 1; padding: 36px 56px; height: 100%; }
+h1 { font-size: 48px; font-weight: 700; color: #60a5fa; letter-spacing: 0.02em; }
+h2 { font-size: 24px; font-weight: 600; color: #60a5fa; margin-bottom: 6px; letter-spacing: 0.01em; }
+h3 { font-size: 14px; font-weight: 600; color: #60a5fa; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: #96a9c5; margin-bottom: 4px; }
+.body-text { font-size: 12px; color: #d0d8e8; line-height: 1.5; }
+.small-text { font-size: 10px; color: #8899b8; }
+.header-meta { position: absolute; top: 8px; left: 56px; font-size: 8px; color: #4a5a78; }
+.page-num { position: absolute; bottom: 12px; right: 56px; font-size: 10px; color: #4a5a78; }
+.accent-line { width: 60px; height: 3px; background: #60a5fa; margin: 12px 0; }
+.card { background: linear-gradient(135deg, rgba(30, 40, 70, 0.6), rgba(20, 30, 60, 0.4)); border: 1px solid rgba(60, 90, 160, 0.2); border-radius: 8px; padding: 12px; }
+.card h3 { color: #60a5fa; font-size: 12px; margin-bottom: 4px; }
+.card p { font-size: 10px; color: #c8d0e0; line-height: 1.5; white-space: pre-line; }
+.num-circle { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; font-size: 16px; font-weight: 700; }
+ul { list-style: none; padding: 0; }
+ul li { padding: 2px 0 2px 16px; position: relative; font-size: 11px; color: #d0d8e8; line-height: 1.4; }
+ul li::before { content: '▸'; position: absolute; left: 0; color: #60a5fa; }
+table { width: 100%; border-collapse: collapse; font-size: 10px; }
+td { padding: 3px 8px; border-bottom: 1px solid rgba(60, 90, 160, 0.15); color: #c8d0e0; }
+td:first-child { color: #60a5fa; font-weight: 600; width: 28%; }
+tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; background: linear-gradient(135deg, #2563eb, #1d4ed8); border-radius: 4px; padding: 2px 8px; font-size: 9px; color: #fff; font-weight: 600; }
+/* Diagram elements */
+.diagram-box { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; align-items: flex-start; }
+.entity { background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(29, 78, 216, 0.1)); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 6px; padding: 8px 12px; min-width: 120px; }
+.entity .name { color: #60a5fa; font-size: 11px; font-weight: 600; text-align: center; border-bottom: 1px solid rgba(96, 165, 250, 0.2); padding-bottom: 3px; margin-bottom: 3px; }
+.entity .attr { font-size: 9px; color: #c8d0e0; padding: 1px 0; }
+.entity .pk { color: #fbbf24; }
+.entity .fk { color: #f472b6; }
+.arrow { color: #4a5a78; font-size: 14px; padding: 0 4px; }
+.actor { display: inline-flex; align-items: center; gap: 6px; background: rgba(30, 40, 70, 0.6); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 20px; padding: 4px 14px; font-size: 10px; color: #d0d8e8; }
+.use-case { background: rgba(30, 40, 70, 0.6); border: 1px dashed rgba(96, 165, 250, 0.3); border-radius: 12px; padding: 4px 14px; font-size: 10px; color: #d0d8e8; display: inline-flex; }
+.bpmn-pool { border: 1px solid rgba(96, 165, 250, 0.25); border-radius: 4px; margin-bottom: 4px; }
+.bpmn-pool .lane-name { background: rgba(37, 99, 235, 0.1); padding: 2px 8px; font-size: 9px; color: #60a5fa; font-weight: 600; }
+.bpmn-pool .steps { display: flex; align-items: center; gap: 4px; padding: 4px 8px; }
+.bpmn-step { background: rgba(30, 40, 70, 0.6); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 4px; padding: 3px 8px; font-size: 8px; color: #d0d8e8; white-space: nowrap; }
+.bpmn-gate { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); transform: rotate(45deg); width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; margin: 0 4px; }
+.bpmn-gate span { transform: rotate(-45deg); font-size: 7px; }
+.flow-arrow { color: #4a5a78; font-size: 10px; }
+.comp-box { background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.05)); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 4px; padding: 6px 10px; font-size: 9px; color: #c8d0e0; }
+pre.code { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(60, 90, 160, 0.2); border-radius: 4px; padding: 8px 10px; font-family: 'Consolas', 'Courier New', monospace; font-size: 9px; color: #a8c0e0; overflow-x: auto; line-height: 1.5; }
+pre.code .kw { color: #f472b6; }
+pre.code .fn { color: #60a5fa; }
+pre.code .str { color: #34d399; }
+pre.code .cm { color: #6b7280; font-style: italic; }
+.flowchart { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.fc-start { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 4px 16px; font-size: 9px; color: #d0d8e8; }
+.fc-process { background: rgba(30, 40, 70, 0.6); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 3px; padding: 4px 16px; font-size: 9px; color: #d0d8e8; }
+.fc-decision { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); padding: 4px 12px; font-size: 8px; color: #fbbf24; transform: skewX(-10deg); }
+.fc-decision div { transform: skewX(10deg); }
+.fc-end { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 4px 16px; font-size: 9px; color: #d0d8e8; }
+.fc-arrow-v { color: #4a5a78; font-size: 8px; }
+.mockup { background: rgba(30, 40, 70, 0.4); border: 1px solid rgba(60, 90, 160, 0.15); border-radius: 4px; overflow: hidden; font-size: 8px; }
+.mockup .mu-header { background: linear-gradient(90deg, #1e3a5f, #162d4a); padding: 4px 8px; color: #60a5fa; font-weight: 600; font-size: 9px; display: flex; justify-content: space-between; }
+.mockup .mu-body { padding: 4px 8px; color: #c8d0e0; }
+.mockup .mu-row { display: flex; gap: 6px; padding: 2px 0; border-bottom: 1px solid rgba(60, 90, 160, 0.08); }
+.mockup .mu-label { color: #8899b8; width: 60px; font-size: 7px; }
+.mockup .mu-value { color: #d0d8e8; font-size: 7px; }
+.mockup .mu-btn { background: rgba(37, 99, 235, 0.3); border-radius: 3px; padding: 2px 8px; color: #60a5fa; font-size: 7px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<!-- 1. TITLE -->
+<div class="slide">
+  <div class="content" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <h1>ПВП</h1>
+    <div class="subtitle" style="margin-top:6px; font-size:16px;">Пункты Взимания Платы</div>
+    <div class="body-text" style="margin-top:4px; color:#8899b8;">Информационная система для автоматизации платных дорожных пунктов</div>
+    <div class="accent-line"></div>
+    <div class="body-text" style="margin-top:6px;">Выполнил студент группы ПИ-23-2 Суханов Кирилл</div>
+    <div class="small-text" style="margin-top:10px;">Руководитель: [ФИО руководителя]</div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">1 / 22</div>
+</div>
+
+<!-- 2. DOMAIN CHARACTERISTICS -->
+<div class="slide">
+  <div class="content">
+    <h2>Характеристика предметной области</h2>
+    <div class="subtitle" style="margin-bottom:10px;">Система автоматизации платных дорожных пунктов (ПВП)</div>
+    <div style="display:flex; gap:12px;">
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:6px;">
+          <h3>Назначение</h3>
+          <p>Автоматизация процессов регистрации проезда транспортных средств через пункты взимания платы, расчёта стоимости, списания средств и контроля штрафов.</p>
+        </div>
+        <div class="card" style="margin-bottom:6px;">
+          <h3>Участники</h3>
+          <p>• Водители — регистрируются, пополняют баланс, совершают поездки<br>• Администратор — управляет справочниками, тарифами, просматривает статистику<br>• Система — автоматически рассчитывает тарифы, списывает средства, налагает штрафы</p>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:6px;">
+          <h3>Бизнес-процессы</h3>
+          <p>1. Регистрация водителя и транспортного средства<br>2. Проезд ТС через полосу ПВП<br>3. Расчёт стоимости по тарифу<br>4. Списание средств (баланс / транспондер)<br>5. Автоматический штраф при неоплате<br>6. Пополнение баланса<br>7. Аналитика и отчётность</p>
+        </div>
+        <div class="card">
+          <h3>Ключевые сущности</h3>
+          <p>Водители, ТС, ПВП, полосы, тарифы, транзакции, транспондеры, штрафы</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">2 / 22</div>
+</div>
+
+<!-- 3. GOALS -->
+<div class="slide">
+  <div class="content">
+    <h2>Цель и задачи системы</h2>
+    <div class="subtitle" style="margin-bottom:14px;">Разработка ИС для пунктов взимания платы на базе Laravel 10</div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">1</div>
+          <h3 style="font-size:11px;">Миграция на Laravel</h3>
+        </div>
+        <p>Перенос монолитного PHP-приложения (≈620 строк) на современный MVC-фреймворк Laravel 10 с сохранением функциональности</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">2</div>
+          <h3 style="font-size:11px;">Аутентификация</h3>
+        </div>
+        <p>Разграничение доступа: администратор (полный CRUD) и водители (личный кабинет). Вход по номеру телефона и паролю</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">3</div>
+          <h3 style="font-size:11px;">Управление поездками</h3>
+        </div>
+        <p>Регистрация транзакций проезда, автоматический расчёт тарифов, поддержка транспондеров, контроль оплаты</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">4</div>
+          <h3 style="font-size:11px;">Штрафы и задолженности</h3>
+        </div>
+        <p>Автоматическое наложение штрафа при неоплате (триггер БД), ручное выписывание, контроль оплаты</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">5</div>
+          <h3 style="font-size:11px;">Аналитика</h3>
+        </div>
+        <p>Дашборд с графиками выручки, загрузки полос, статистикой по водителям. Экспорт отчётов в CSV</p>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <div class="num-circle" style="width:28px; height:28px; font-size:14px;">6</div>
+          <h3 style="font-size:11px;">Docker-развёртывание</h3>
+        </div>
+        <p>Контейнеризация PHP 8.2 + PostgreSQL 16 + Adminer в единую docker-compose сборку</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">3 / 22</div>
+</div>
+
+<!-- 4. USE CASE DIAGRAM -->
+<div class="slide">
+  <div class="content">
+    <h2>Диаграмма вариантов использования (UML)</h2>
+    <div class="subtitle" style="margin-bottom:8px;">Актёры: Администратор, Водитель, Система</div>
+    <div style="display:flex; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:6px; min-width:140px;">
+        <div class="actor">👤 Администратор</div>
+        <div style="border-left:2px solid rgba(96,165,250,0.3); padding-left:8px; margin-left:12px; display:flex; flex-direction:column; gap:3px;">
+          <span class="use-case">Управление водителями</span>
+          <span class="use-case">Управление ТС</span>
+          <span class="use-case">Управление ПВП/полосами</span>
+          <span class="use-case">Управление тарифами</span>
+          <span class="use-case">Управление транспондерами</span>
+          <span class="use-case">Регистрация транзакций</span>
+          <span class="use-case">Управление штрафами</span>
+          <span class="use-case">Просмотр статистики</span>
+          <span class="use-case">Экспорт отчётов</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; min-width:140px;">
+        <div class="actor">👤 Водитель</div>
+        <div style="border-left:2px solid rgba(96,165,250,0.3); padding-left:8px; margin-left:12px; display:flex; flex-direction:column; gap:3px;">
+          <span class="use-case">Регистрация в системе</span>
+          <span class="use-case">Вход в личный кабинет</span>
+          <span class="use-case">Просмотр профиля</span>
+          <span class="use-case">Пополнение баланса</span>
+          <span class="use-case">Просмотр поездок</span>
+          <span class="use-case">Просмотр штрафов</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <div class="actor">⚙ Система</div>
+        <div style="border-left:2px solid rgba(96,165,250,0.3); padding-left:8px; margin-left:12px; display:flex; flex-direction:column; gap:3px;">
+          <span class="use-case">Расчёт тарифа</span>
+          <span class="use-case">Списание средств</span>
+          <span class="use-case">Авто-штраф (триггер)</span>
+          <span class="use-case">Генерация серийных номеров</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:6px; text-align:center;">
+      <span style="font-size:8px; color:#4a5a78;">include/extend отношения опущены для наглядности</span>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">4 / 22</div>
+</div>
+
+<!-- 5. BPMN -->
+<div class="slide">
+  <div class="content">
+    <h2>Модель бизнес-процесса (BPMN)</h2>
+    <div class="subtitle" style="margin-bottom:8px;">Процесс «Регистрация проезда ТС через ПВП»</div>
+    <div class="bpmn-pool">
+      <div class="lane-name">🐾 Пул: Водитель</div>
+      <div class="steps">
+        <span class="bpmn-step">Подъезд к ПВП</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Выбор полосы</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Проезд через полосу</span>
+      </div>
+    </div>
+    <div class="bpmn-pool">
+      <div class="lane-name">🐾 Пул: Система</div>
+      <div class="steps">
+        <span class="bpmn-step">Фиксация проезда</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Определение ТС</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Расчёт тарифа</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-gate"><span>✧</span></span>
+        <span class="bpmn-step">Списание средств</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Регистрация транзакции</span>
+      </div>
+    </div>
+    <div class="bpmn-pool">
+      <div class="lane-name">🐾 Пул: БД (триггер)</div>
+      <div class="steps">
+        <span class="bpmn-gate"><span>✧</span></span>
+        <span class="bpmn-step" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);">Проверка статуса</span>
+        <span class="flow-arrow">→</span>
+        <span class="bpmn-step">Если «неоплата» → создание штрафа</span>
+      </div>
+    </div>
+    <div style="margin-top:6px; display:flex; gap:8px; font-size:8px; color:#8899b8; justify-content:center;">
+      <span>○ Старт</span>
+      <span>▢ Действие</span>
+      <span>◇ Шлюз</span>
+      <span>● Конец</span>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">5 / 22</div>
+</div>
+
+<!-- 6. ER CONCEPTUAL -->
+<div class="slide">
+  <div class="content">
+    <h2>ER-диаграмма концептуальной модели данных</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Основные сущности и связи (без атрибутов)</div>
+    <div class="diagram-box" style="justify-content:center; gap:6px;">
+      <div class="entity"><div class="name">Водитель</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Транспортное средство</div></div>
+      <div class="arrow">M ─── 1</div>
+      <div class="entity"><div class="name">Тип авто</div></div>
+    </div>
+    <div class="diagram-box" style="justify-content:center; gap:6px;">
+      <div class="entity"><div class="name">ТС</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Транзакция</div></div>
+      <div class="arrow">M ─── 1</div>
+      <div class="entity"><div class="name">ПВП</div></div>
+    </div>
+    <div class="diagram-box" style="justify-content:center; gap:6px;">
+      <div class="entity"><div class="name">ТС</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Транспондер</div></div>
+      <div class="entity" style="min-width:90px;"><div class="name">Тип полосы</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Полоса</div></div>
+    </div>
+    <div class="diagram-box" style="justify-content:center; gap:6px;">
+      <div class="entity"><div class="name">Водитель</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Штраф</div></div>
+      <div class="arrow">M ─── 1</div>
+      <div class="entity"><div class="name">Тип штрафа</div></div>
+    </div>
+    <div class="diagram-box" style="justify-content:center; gap:6px;">
+      <div class="entity"><div class="name">Тип авто</div></div>
+      <div class="arrow">1 ─── M</div>
+      <div class="entity"><div class="name">Тариф</div></div>
+    </div>
+    <div style="margin-top:4px; text-align:center; font-size:8px; color:#4a5a78;">11 сущностей: Водитель, ТС, Тип авто, ПВП, Полоса, Тип полосы, Тариф, Транзакция, Способ оплаты, Транспондер, Штраф, Тип штрафа</div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">6 / 22</div>
+</div>
+
+<!-- 7. LOGICAL MODEL -->
+<div class="slide">
+  <div class="content">
+    <h2>Диаграмма логической модели данных</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Сущности с первичными и внешними ключами</div>
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:4px;">
+      <div class="entity"><div class="name">drivers</div><div class="attr pk">PK: id_driver (SERIAL)</div><div class="attr">full_name VARCHAR(255)</div><div class="attr">phone_number VARCHAR(20)</div><div class="attr">birth_date DATE</div><div class="attr">personal_balance NUMERIC(10,2)</div></div>
+      <div class="entity"><div class="name">vehicles</div><div class="attr pk">PK: id_vehicle (SERIAL)</div><div class="attr fk">FK: id_auto_type → auto_types</div><div class="attr fk">FK: id_driver → drivers</div><div class="attr">plate_number VARCHAR(20)</div><div class="attr">name VARCHAR(255)</div></div>
+      <div class="entity"><div class="name">auto_types</div><div class="attr pk">PK: id_auto_type (SERIAL)</div><div class="attr">name VARCHAR(100)</div></div>
+      <div class="entity"><div class="name">payment_points</div><div class="attr pk">PK: id_point (SERIAL)</div><div class="attr">name VARCHAR(255)</div><div class="attr">location VARCHAR(255)</div><div class="attr">lanes_count INTEGER</div></div>
+      <div class="entity"><div class="name">lanes</div><div class="attr pk">PK: id_lane (SERIAL)</div><div class="attr fk">FK: id_point → payment_points</div><div class="attr">lane_number INTEGER</div></div>
+      <div class="entity"><div class="name">tariffs</div><div class="attr pk">PK: id_tariff (SERIAL)</div><div class="attr fk">FK: id_auto_type → auto_types</div><div class="attr">amount NUMERIC(10,2)</div></div>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:4px; margin-top:4px;">
+      <div class="entity"><div class="name">transactions</div><div class="attr pk">PK: id_transaction (SERIAL)</div><div class="attr fk">FK: id_point → payment_points</div><div class="attr fk">FK: id_lane → lanes</div><div class="attr fk">FK: id_vehicle → vehicles</div><div class="attr fk">FK: id_payment_method → payment_methods</div><div class="attr">amount NUMERIC(10,2)</div><div class="attr">status VARCHAR(20)</div></div>
+      <div class="entity"><div class="name">transponders</div><div class="attr pk">PK: id_transponder (SERIAL)</div><div class="attr fk">FK: id_vehicle → vehicles</div><div class="attr">serial_number VARCHAR(100)</div><div class="attr">status VARCHAR(20)</div></div>
+      <div class="entity"><div class="name">fines</div><div class="attr pk">PK: id_fine (SERIAL)</div><div class="attr fk">FK: id_driver → drivers</div><div class="attr fk">FK: id_vehicle → vehicles</div><div class="attr fk">FK: id_fine_type → fine_types</div><div class="attr">amount NUMERIC(10,2)</div><div class="attr">payment_status VARCHAR(20)</div></div>
+    </div>
+    <div style="margin-top:3px; font-size:8px; color:#4a5a78;">
+      <span class="pk">█ PK</span> <span class="fk">█ FK</span> — 12 таблиц
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">7 / 22</div>
+</div>
+
+<!-- 8. PHYSICAL MODEL -->
+<div class="slide">
+  <div class="content">
+    <h2>Диаграмма физической модели данных</h2>
+    <div class="subtitle" style="margin-bottom:6px;">SQL-типы, ограничения, индексы, триггеры</div>
+    <div style="display:flex; gap:10px;">
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:4px;"><h3>Таблицы (PostgreSQL 16)</h3>
+          <pre class="code" style="font-size:7px; padding:4px 6px;">CREATE TABLE transactions (
+  id_transaction SERIAL PRIMARY KEY,
+  id_point INTEGER NOT NULL REFERENCES payment_points,
+  id_lane INTEGER NOT NULL REFERENCES lanes,
+  id_vehicle INTEGER NOT NULL REFERENCES vehicles,
+  amount NUMERIC(10,2) NOT NULL CHECK (amount >= 0),
+  status VARCHAR(20) DEFAULT 'успешно'
+    CHECK (status IN ('успешно','неоплата')),
+  datetime TIMESTAMP DEFAULT NOW()
+);</pre>
+        </div>
+        <div class="card"><h3>Индексы</h3>
+          <pre class="code" style="font-size:7px; padding:4px 6px;">CREATE INDEX idx_trans_date
+  ON transactions(datetime);
+CREATE INDEX idx_trans_point
+  ON transactions(id_point);
+CREATE INDEX idx_veh_plate
+  ON vehicles(plate_number);</pre>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:4px;"><h3>Ограничения CHECK</h3>
+          <pre class="code" style="font-size:7px; padding:4px 6px;">CHECK (personal_balance >= 0)     -- drivers
+CHECK (amount >= 0)               -- transactions
+CHECK (amount > 0)                -- fines
+CHECK (lanes_count > 0)           -- payment_points
+CHECK (status IN (...))           -- транзакции
+CHECK (payment_status IN (...))   -- штрафы</pre>
+        </div>
+        <div class="card"><h3>Триггер</h3>
+          <pre class="code" style="font-size:7px; padding:4px 6px;">CREATE OR REPLACE FUNCTION auto_fine_for_non_payment()
+RETURNS TRIGGER LANGUAGE plpgsql AS $$
+BEGIN
+  IF NEW.status = 'неоплата' THEN
+    INSERT INTO fines (...)
+    VALUES (NEW.id_vehicle, NEW.id_driver,
+            500.00, 'неоплачен', ...);
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trg_auto_fine
+AFTER INSERT ON transactions
+FOR EACH ROW EXECUTE FUNCTION
+  auto_fine_for_non_payment();</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">8 / 22</div>
+</div>
+
+<!-- 9. SQL QUERIES -->
+<div class="slide">
+  <div class="content">
+    <h2>Примеры запросов к БД</h2>
+    <div class="subtitle" style="margin-bottom:8px;">Разбор 2-х характерных запросов</div>
+    <div style="display:flex; gap:10px;">
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:6px;">
+          <h3>Запрос 1: Итоговая сумма по водителям</h3>
+          <pre class="code">SELECT d.full_name,
+       COUNT(t.id_transaction) AS trips,
+       SUM(t.amount) AS total_spent
+FROM drivers d
+JOIN vehicles v ON v.id_driver = d.id_driver
+JOIN transactions t ON t.id_vehicle = v.id_vehicle
+WHERE t.status = 'успешно'
+  AND t.datetime >= NOW() - INTERVAL '30 days'
+GROUP BY d.id_driver, d.full_name
+ORDER BY total_spent DESC
+LIMIT 10;</pre>
+          <p style="font-size:8px; color:#8899b8;">Аналитика: ТОП-10 водителей по сумме за 30 дней</p>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:6px;">
+          <h3>Запрос 2: Загрузка полос ПВП</h3>
+          <pre class="code">SELECT pp.name AS point_name,
+       l.lane_number,
+       COUNT(t.id_transaction) AS pass_count,
+       COALESCE(SUM(t.amount), 0) AS revenue
+FROM payment_points pp
+JOIN lanes l ON l.id_point = pp.id_point
+LEFT JOIN transactions t
+  ON t.id_lane = l.id_lane
+  AND t.datetime >= NOW() - INTERVAL '7 days'
+GROUP BY pp.id_point, pp.name,
+         l.id_lane, l.lane_number
+ORDER BY pp.name, l.lane_number;</pre>
+          <p style="font-size:8px; color:#8899b8;">Отчёт по загрузке каждой полосы за последнюю неделю</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">9 / 22</div>
+</div>
+
+<!-- 10. STORED PROCEDURE FLOWCHARTS -->
+<div class="slide">
+  <div class="content">
+    <h2>Блок-схемы алгоритмов хранимых процедур</h2>
+    <div class="subtitle" style="margin-bottom:8px;">Процедура auto_fine_for_non_payment()</div>
+    <div style="display:flex; gap:20px; justify-content:center;">
+      <div class="flowchart">
+        <div class="fc-start">Старт</div>
+        <div class="fc-arrow-v">↓</div>
+        <div class="fc-process">AFTER INSERT ON transactions</div>
+        <div class="fc-arrow-v">↓</div>
+        <div class="fc-decision"><div>NEW.status = 'неоплата'?</div></div>
+        <div class="fc-arrow-v">↓</div>
+        <div style="display:flex; gap:20px;">
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <span class="fc-arrow-v">↓ Да</span>
+            <div class="fc-process" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);">INSERT INTO fines (id_driver, id_vehicle, amount, status)</div>
+            <div class="fc-arrow-v">↓</div>
+            <div class="fc-process">Значение штрафа: 500.00</div>
+            <div class="fc-arrow-v">↓</div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <span class="fc-arrow-v">↓ Нет</span>
+            <div class="fc-process" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);">Выход (без штрафа)</div>
+            <div class="fc-arrow-v">↓</div>
+          </div>
+        </div>
+        <div class="fc-end">Конец</div>
+      </div>
+      <div style="border-left:1px solid rgba(60,90,160,0.2); padding-left:12px;">
+        <h3>Описание</h3>
+        <p style="font-size:9px; color:#c8d0e0; line-height:1.5;">Триггерная функция срабатывает после вставки каждой транзакции. Если статус = 'неоплата', автоматически создаётся запись в таблице fines со штрафом 500.00₽ со статусом 'неоплачен'. Если оплата успешна — никаких действий.</p>
+        <p style="font-size:9px; color:#8899b8; margin-top:6px;">Язык: PL/pgSQL<br>Тип: AFTER INSERT, FOR EACH ROW</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">10 / 22</div>
+</div>
+
+<!-- 11. ARCHITECTURE -->
+<div class="slide">
+  <div class="content">
+    <h2>Архитектура информационной системы (UML)</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Диаграмма компонентов</div>
+    <div style="display:flex; gap:8px;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px;">
+        <div style="text-align:center; color:#fbbf24; font-size:9px; font-weight:600;">Клиентский уровень</div>
+        <div class="comp-box" style="text-align:center; border-color:rgba(251,191,36,0.3);">
+          <div style="font-weight:600; color:#fbbf24;">Веб-браузер</div>
+          <div>Bootstrap 5.3 · jQuery 3.6</div>
+          <div>DataTables · Chart.js</div>
+          <div style="font-size:8px; color:#4a5a78;">localhost:8000</div>
+        </div>
+        <div class="flow-arrow" style="text-align:center;">↓ HTTP</div>
+      </div>
+      <div style="flex:2; display:flex; flex-direction:column; gap:4px;">
+        <div style="text-align:center; color:#60a5fa; font-size:9px; font-weight:600;">Сервер приложений (Laravel 10)</div>
+        <div style="display:flex; gap:4px;">
+          <div class="comp-box" style="flex:1; text-align:center;">
+            <div style="font-weight:600; color:#60a5fa;">Middleware</div>
+            <div>AuthenticateDriver</div>
+            <div>AdminOnly</div>
+          </div>
+          <div class="comp-box" style="flex:1; text-align:center;">
+            <div style="font-weight:600; color:#60a5fa;">Controllers</div>
+            <div>13 контроллеров</div>
+            <div>52 метода</div>
+          </div>
+          <div class="comp-box" style="flex:1; text-align:center;">
+            <div style="font-weight:600; color:#60a5fa;">Views (Blade)</div>
+            <div>17 шаблонов</div>
+            <div>+ layout + модалки</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:4px;">
+          <div class="comp-box" style="flex:1; text-align:center;">
+            <div style="font-weight:600; color:#60a5fa;">Models (Eloquent)</div>
+            <div>12 моделей ORM</div>
+          </div>
+          <div class="comp-box" style="flex:1; text-align:center;">
+            <div style="font-weight:600; color:#60a5fa;">session · files</div>
+            <div>Аутентификация</div>
+          </div>
+        </div>
+        <div class="flow-arrow" style="text-align:center;">↓ PDO / SQL</div>
+        <div style="text-align:center; color:#34d399; font-size:9px; font-weight:600;">Уровень данных</div>
+        <div class="comp-box" style="text-align:center; border-color:rgba(52,211,153,0.3);">
+          <div style="font-weight:600; color:#34d399;">PostgreSQL 16</div>
+          <div>12 таблиц · триггеры · индексы</div>
+          <div style="font-size:8px; color:#4a5a78;">docker: pvp_db:5432</div>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px;">
+        <div style="text-align:center; color:#a78bfa; font-size:9px; font-weight:600;">Инфраструктура</div>
+        <div class="comp-box" style="text-align:center; border-color:rgba(167,139,250,0.3);">
+          <div style="font-weight:600; color:#a78bfa;">Docker Compose</div>
+          <div>app (PHP 8.2 CLI)</div>
+          <div>pvp_db (PG 16)</div>
+          <div>adminer (port 8080)</div>
+        </div>
+        <div class="comp-box" style="text-align:center; margin-top:4px; border-color:rgba(167,139,250,0.3);">
+          <div style="font-weight:600; color:#a78bfa;">File System</div>
+          <div>SESSION_DRIVER=file</div>
+          <div>Log: storage/logs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">11 / 22</div>
+</div>
+
+<!-- 12. INTERFACE: Login -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс прикладного приложения</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Экран входа в систему</div>
+    <div style="display:flex; gap:12px;">
+      <div class="mockup" style="width:360px;">
+        <div class="mu-header"><span>🔐 Вход в систему</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">Телефон:</span><span class="mu-value">+7 (___)-___-__-__</span></div>
+          <div class="mu-row"><span class="mu-label">Пароль:</span><span class="mu-value">••••••••</span></div>
+          <div class="mu-row" style="justify-content:center; padding:6px 0;">
+            <span class="mu-btn">➜ Войти</span>
+          </div>
+          <div class="mu-row" style="justify-content:center;">
+            <span style="font-size:7px; color:#60a5fa;">Нет аккаунта? Зарегистрироваться</span>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card">
+          <h3>Возможности экрана входа</h3>
+          <ul>
+            <li>Автоформатирование телефона: +7 (XXX) XXX-XX-XX</li>
+            <li>Проверка пароля (bcrypt)</li>
+            <li>Разграничение: admin → дашборд, driver → профиль</li>
+            <li>Ссылка на регистрацию для новых пользователей</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top:4px;">
+          <h3>Тестовые аккаунты</h3>
+          <table>
+            <tr><td>Администратор</td><td>+70066564484</td><td>password123</td></tr>
+            <tr><td>Водитель</td><td>+7XXXXXXXXXX</td><td>password123</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">12 / 22</div>
+</div>
+
+<!-- 13. INTERFACE: Dashboard -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Дашборд администратора</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Сводка за 30 дней</div>
+    <div class="mockup" style="width:100%;">
+      <div class="mu-header"><span>📊 Панель управления</span><span>👤 Администратор</span></div>
+      <div class="mu-body">
+        <div style="display:flex; gap:8px; margin-bottom:6px;">
+          <div style="flex:1; background:rgba(37,99,235,0.1); border-radius:4px; padding:6px; text-align:center;">
+            <div style="font-size:18px; color:#60a5fa; font-weight:700;">47</div>
+            <div style="font-size:7px; color:#8899b8;">Транзакций</div>
+          </div>
+          <div style="flex:1; background:rgba(16,185,129,0.1); border-radius:4px; padding:6px; text-align:center;">
+            <div style="font-size:18px; color:#34d399; font-weight:700;">128 450 ₽</div>
+            <div style="font-size:7px; color:#8899b8;">Выручка</div>
+          </div>
+          <div style="flex:1; background:rgba(245,158,11,0.1); border-radius:4px; padding:6px; text-align:center;">
+            <div style="font-size:18px; color:#fbbf24; font-weight:700;">23</div>
+            <div style="font-size:7px; color:#8899b8;">Водителей</div>
+          </div>
+          <div style="flex:1; background:rgba(167,139,250,0.1); border-radius:4px; padding:6px; text-align:center;">
+            <div style="font-size:18px; color:#a78bfa; font-weight:700;">2 732 ₽</div>
+            <div style="font-size:7px; color:#8899b8;">Средний чек</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <div style="flex:1; border-right:1px solid rgba(60,90,160,0.1); padding-right:6px;">
+            <div style="font-size:8px; color:#60a5fa; font-weight:600;">📈 Выручка по дням</div>
+            <div style="height:60px; display:flex; align-items:flex-end; gap:2px; padding:4px 0;">
+              <div style="flex:1; height:20px; background:rgba(96,165,250,0.3);"></div>
+              <div style="flex:1; height:35px; background:rgba(96,165,250,0.4);"></div>
+              <div style="flex:1; height:25px; background:rgba(96,165,250,0.3);"></div>
+              <div style="flex:1; height:45px; background:rgba(96,165,250,0.5);"></div>
+              <div style="flex:1; height:30px; background:rgba(96,165,250,0.4);"></div>
+              <div style="flex:1; height:50px; background:rgba(96,165,250,0.6);"></div>
+              <div style="flex:1; height:40px; background:rgba(96,165,250,0.5);"></div>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:8px; color:#60a5fa; font-weight:600;">⏱ Последние транзакции</div>
+            <div style="font-size:7px; color:#c8d0e0;">
+              <div>А123ВС — Полоса 2 — 150.00 ₽</div>
+              <div>В456УК — Полоса 1 — 200.00 ₽</div>
+              <div>М789ОР — Полоса 3 — 100.00 ₽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">13 / 22</div>
+</div>
+
+<!-- 14. INTERFACE: Profile -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Личный кабинет водителя</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Профиль, баланс, поездки, штрафы</div>
+    <div style="display:flex; gap:10px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>👤 Иванов И.И.</span><span>+7 (999) 123-45-67</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">Баланс:</span><span class="mu-value" style="color:#34d399;">1 250.50 ₽</span><span class="mu-btn">Пополнить</span></div>
+          <div class="mu-row"><span class="mu-label">Авто:</span><span class="mu-value">А123ВС77 (Lada Vesta)</span></div>
+          <div class="mu-row"><span class="mu-label">Транспондер:</span><span class="mu-value">TRP260101A1B2 (активен)</span></div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:2;">
+        <div class="mu-header"><span>📋 Последние поездки</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-value" style="width:40%;">12.05.2026 14:30</span><span class="mu-value" style="width:20%;">ПВП-1</span><span class="mu-value" style="width:20%;">150.00 ₽</span><span class="mu-value" style="color:#34d399;">✓</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:40%;">12.05.2026 09:15</span><span class="mu-value" style="width:20%;">ПВП-2</span><span class="mu-value" style="width:20%;">200.00 ₽</span><span class="mu-value" style="color:#34d399;">✓</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:40%;">10.05.2026 18:00</span><span class="mu-value" style="width:20%;">ПВП-1</span><span class="mu-value" style="width:20%;">100.00 ₽</span><span class="mu-value" style="color:#ef4444;">✗</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup" style="flex:1; margin-top:6px;">
+      <div class="mu-header"><span>⚠ Штрафы</span></div>
+      <div class="mu-body">
+        <div class="mu-row"><span class="mu-value" style="width:40%;">10.05.2026</span><span class="mu-value" style="width:30%;">500.00 ₽</span><span class="mu-value" style="color:#fbbf24;">неоплачен</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">14 / 22</div>
+</div>
+
+<!-- 15. INTERFACE: Drivers CRUD -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Реестр водителей (CRUD)</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Администрирование учётных записей</div>
+    <div class="mockup" style="width:100%;">
+      <div class="mu-header"><span>👥 Реестр водителей</span><span class="mu-btn">+ Новый водитель</span></div>
+      <div class="mu-body">
+        <div class="mu-row" style="background:rgba(96,165,250,0.05);">
+          <span class="mu-value" style="width:35%; font-weight:600; color:#60a5fa;">Водитель</span>
+          <span class="mu-value" style="width:25%; font-weight:600; color:#60a5fa;">Телефон</span>
+          <span class="mu-value" style="width:20%; font-weight:600; color:#60a5fa;">Баланс</span>
+          <span class="mu-value" style="width:20%; font-weight:600; color:#60a5fa;">Действия</span>
+        </div>
+        <div class="mu-row"><span class="mu-value" style="width:35%;">Сергей Петров</span><span class="mu-value" style="width:25%;">+7 (006) 656-44-84</span><span class="mu-value" style="width:20%; color:#34d399;">15 230.00 ₽</span><span class="mu-value" style="width:20%;"><span class="mu-btn">👁</span> <span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">🗑</span></span></div>
+        <div class="mu-row"><span class="mu-value" style="width:35%;">Иван Иванов</span><span class="mu-value" style="width:25%;">+7 (999) 123-45-67</span><span class="mu-value" style="width:20%; color:#ef4444;">45.50 ₽</span><span class="mu-value" style="width:20%;"><span class="mu-btn">👁</span> <span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">🗑</span></span></div>
+      </div>
+    </div>
+    <div style="margin-top:6px; display:flex; gap:8px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>📊 Статистика</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">Всего:</span><span class="mu-value">101 водитель</span></div>
+          <div class="mu-row"><span class="mu-label">Средства:</span><span class="mu-value">128 450.00 ₽</span></div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:2;">
+        <div class="mu-header"><span>➕ Карточка водителя (модальное окно)</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">ФИО:</span><span class="mu-value">Иванов Иван Иванович</span></div>
+          <div class="mu-row"><span class="mu-label">Телефон:</span><span class="mu-value">+7 (999) 123-45-67</span></div>
+          <div class="mu-row"><span class="mu-label">Авто:</span><span class="mu-value">А123ВС77, В456УК78</span></div>
+          <div class="mu-row"><span class="mu-label">Баланс:</span><span class="mu-value">1 250.50 ₽</span><span class="mu-btn">➕ Пополнить</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">15 / 22</div>
+</div>
+
+<!-- 16. INTERFACE: Vehicles -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Управление транспортными средствами</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Регистрация и редактирование ТС</div>
+    <div class="mockup" style="width:100%;">
+      <div class="mu-header"><span>🚗 Автомобили</span><span class="mu-btn">+ Добавить</span></div>
+      <div class="mu-body">
+        <div class="mu-row" style="background:rgba(96,165,250,0.05);">
+          <span class="mu-value" style="width:20%; font-weight:600; color:#60a5fa;">Госномер</span>
+          <span class="mu-value" style="width:25%; font-weight:600; color:#60a5fa;">Марка/Модель</span>
+          <span class="mu-value" style="width:15%; font-weight:600; color:#60a5fa;">Тип</span>
+          <span class="mu-value" style="width:25%; font-weight:600; color:#60a5fa;">Владелец</span>
+          <span class="mu-value" style="width:15%; font-weight:600; color:#60a5fa;">Действия</span>
+        </div>
+        <div class="mu-row"><span class="mu-value" style="width:20%;">А123ВС77</span><span class="mu-value" style="width:25%;">Lada Vesta</span><span class="mu-value" style="width:15%;">Легковой</span><span class="mu-value" style="width:25%;">Иванов И.И.</span><span class="mu-value" style="width:15%;"><span class="mu-btn">✎</span> <span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">🗑</span></span></div>
+        <div class="mu-row"><span class="mu-value" style="width:20%;">В456УК78</span><span class="mu-value" style="width:25%;">KIA Rio</span><span class="mu-value" style="width:15%;">Легковой</span><span class="mu-value" style="width:25%;">Петров С.В.</span><span class="mu-value" style="width:15%;"><span class="mu-btn">✎</span> <span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">🗑</span></span></div>
+      </div>
+    </div>
+    <div class="mockup" style="margin-top:6px; width:400px;">
+      <div class="mu-header"><span>➕ Добавление автомобиля</span></div>
+      <div class="mu-body">
+        <div class="mu-row"><span class="mu-label">Госномер:</span><span class="mu-value">[А123ВС77]</span></div>
+        <div class="mu-row"><span class="mu-label">Модель:</span><span class="mu-value">[Lada Vesta]</span></div>
+        <div class="mu-row"><span class="mu-label">Тип:</span><span class="mu-value">▼ Легковой</span></div>
+        <div class="mu-row"><span class="mu-label">Владелец:</span><span class="mu-value">▼ Иванов И.И.</span></div>
+        <div class="mu-row" style="justify-content:center;"><span class="mu-btn">💾 Сохранить</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">16 / 22</div>
+</div>
+
+<!-- 17. INTERFACE: Transaction Form -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Регистрация транзакции</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Форма создания проезда</div>
+    <div style="display:flex; gap:10px;">
+      <div class="mockup" style="width:420px;">
+        <div class="mu-header"><span>💰 Регистрация проезда</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">Пункт:</span><span class="mu-value">▼ ПВП-1 (МКАД, 32 км)</span></div>
+          <div class="mu-row"><span class="mu-label">Полоса:</span><span class="mu-value">▼ Полоса №2 - Универсальная</span></div>
+          <div class="mu-row"><span class="mu-label">Авто:</span><span class="mu-value">▼ А123ВС77 (Иванов И.И.)</span></div>
+          <div class="mu-row"><span class="mu-label">Тариф:</span><span class="mu-value">▼ Легковой - 150.00 ₽</span></div>
+          <div class="mu-row"><span class="mu-label">Сумма:</span><span class="mu-value">[150.00]</span></div>
+          <div class="mu-row"><span class="mu-label">Оплата:</span><span class="mu-value">▼ Транспондер</span></div>
+          <div class="mu-row" style="justify-content:center;"><span class="mu-btn">✅ Зарегистрировать</span></div>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:4px;">
+          <h3>Особенности формы</h3>
+          <ul>
+            <li>Каскадный выбор: ПВП → полоса (AJAX)</li>
+            <li>Автоподстановка тарифа по типу ТС</li>
+            <li>Авторасчёт суммы при выборе тарифа</li>
+            <li>Проверка активного транспондера при оплате</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Валидация</h3>
+          <ul>
+            <li>Обязательные поля подсвечиваются</li>
+            <li>Сумма не может быть отрицательной</li>
+            <li>Если способ = транспондер — проверка наличия</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">17 / 22</div>
+</div>
+
+<!-- 18. INTERFACE: Fines -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Управление штрафами</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Ручное и автоматическое наложение</div>
+    <div style="display:flex; gap:10px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>⚠ Штрафы</span><span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">+ Назначить</span></div>
+        <div class="mu-body">
+          <div class="mu-row" style="background:rgba(96,165,250,0.05);">
+            <span class="mu-value" style="width:20%;font-weight:600;color:#60a5fa;">ID</span>
+            <span class="mu-value" style="width:25%;font-weight:600;color:#60a5fa;">Водитель</span>
+            <span class="mu-value" style="width:15%;font-weight:600;color:#60a5fa;">Сумма</span>
+            <span class="mu-value" style="width:20%;font-weight:600;color:#60a5fa;">Статус</span>
+            <span class="mu-value" style="width:20%;font-weight:600;color:#60a5fa;">Действия</span>
+          </div>
+          <div class="mu-row"><span class="mu-value" style="width:20%;">#1</span><span class="mu-value" style="width:25%;">Иванов И.И.</span><span class="mu-value" style="width:15%;">500 ₽</span><span class="mu-value" style="width:20%;color:#fbbf24;">неоплачен</span><span class="mu-value" style="width:20%;"><span class="mu-btn" style="background:rgba(16,185,129,0.3);color:#34d399;">✓</span></span></div>
+          <div class="mu-row"><span class="mu-value" style="width:20%;">#2</span><span class="mu-value" style="width:25%;">Петров С.В.</span><span class="mu-value" style="width:15%;">500 ₽</span><span class="mu-value" style="width:20%;color:#34d399;">оплачен</span><span class="mu-value" style="width:20%;">—</span></div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>➕ Назначение штрафа</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-label">Водитель:</span><span class="mu-value">▼ Иванов И.И.</span></div>
+          <div class="mu-row"><span class="mu-label">Авто:</span><span class="mu-value">▼ А123ВС77</span></div>
+          <div class="mu-row"><span class="mu-label">Тип:</span><span class="mu-value">▼ За неоплату проезда</span></div>
+          <div class="mu-row"><span class="mu-label">Сумма:</span><span class="mu-value">[500.00]</span></div>
+          <div class="mu-row"><span class="mu-label">Коммент:</span><span class="mu-value">[необязательно]</span></div>
+          <div class="mu-row" style="justify-content:center;"><span class="mu-btn" style="background:rgba(239,68,68,0.3);color:#ef4444;">⚠ Выписать</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">18 / 22</div>
+</div>
+
+<!-- 19. INTERFACE: Transponders -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Транспондеры</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Управление устройствами ESP</div>
+    <div style="display:flex; gap:10px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>📡 Транспондеры</span><span class="mu-btn">+ Назначить</span></div>
+        <div class="mu-body">
+          <div class="mu-row" style="background:rgba(96,165,250,0.05);">
+            <span class="mu-value" style="width:25%;font-weight:600;color:#60a5fa;">Серийный №</span>
+            <span class="mu-value" style="width:25%;font-weight:600;color:#60a5fa;">Автомобиль</span>
+            <span class="mu-value" style="width:20%;font-weight:600;color:#60a5fa;">Владелец</span>
+            <span class="mu-value" style="width:15%;font-weight:600;color:#60a5fa;">Статус</span>
+            <span class="mu-value" style="width:15%;font-weight:600;color:#60a5fa;"></span>
+          </div>
+          <div class="mu-row"><span class="mu-value" style="width:25%;font-family:monospace;">TRP260101A1B2</span><span class="mu-value" style="width:25%;">А123ВС77</span><span class="mu-value" style="width:20%;">Иванов И.И.</span><span class="mu-value" style="width:15%;color:#34d399;">🟢 активен</span><span class="mu-value" style="width:15%;"><span class="mu-btn">✎</span></span></div>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="margin-bottom:4px;">
+          <h3>Генерация серийного номера</h3>
+          <pre class="code" style="font-size:8px;">Формат: TRP + дата (YYMMDD) + 6 случайных символов
+Пример: TRP260101A1B2C3</pre>
+        </div>
+        <div class="card">
+          <h3>Статусы</h3>
+          <ul>
+            <li>🟢 Активен — транспондер привязан к ТС и готов к работе</li>
+            <li>🔴 Неактивен — транспондер откреплён или заблокирован</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">19 / 22</div>
+</div>
+
+<!-- 20. INTERFACE: Statistics -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: Статистика и аналитика</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Графики Chart.js, экспорт CSV</div>
+    <div style="display:flex; gap:8px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>📈 Выручка по дням</span></div>
+        <div class="mu-body" style="padding:6px;">
+          <div style="height:80px; display:flex; align-items:flex-end; gap:2px;">
+            <div style="flex:1; height:30%; background:rgba(96,165,250,0.3); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:45%; background:rgba(96,165,250,0.4); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:25%; background:rgba(96,165,250,0.3); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:60%; background:rgba(96,165,250,0.5); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:40%; background:rgba(96,165,250,0.4); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:75%; background:rgba(96,165,250,0.6); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:55%; background:rgba(96,165,250,0.5); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:35%; background:rgba(96,165,250,0.3); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:50%; background:rgba(96,165,250,0.4); border-radius:2px 2px 0 0;"></div>
+            <div style="flex:1; height:65%; background:rgba(96,165,250,0.5); border-radius:2px 2px 0 0;"></div>
+          </div>
+          <div style="font-size:7px; color:#4a5a78; text-align:center; margin-top:2px;">01.06 — 10.06.2026</div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>🍩 Способы оплаты</span></div>
+        <div class="mu-body" style="display:flex; align-items:center; gap:8px; padding:6px;">
+          <div style="width:60px; height:60px; border-radius:50%; background:conic-gradient(#60a5fa 0% 60%, #34d399 60% 85%, #fbbf24 85% 100%);"></div>
+          <div style="font-size:7px; color:#c8d0e0;">
+            <div><span style="color:#60a5fa;">●</span> Транспондер 60%</div>
+            <div><span style="color:#34d399;">●</span> Наличные 25%</div>
+            <div><span style="color:#fbbf24;">●</span> Карта 15%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; margin-top:6px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>🏆 ТОП-5 точек</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-value" style="width:60%;">ПВП-1 (МКАД 32 км)</span><span class="mu-value">45 230 ₽</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:60%;">ПВП-2 (М-4 Дон)</span><span class="mu-value">32 100 ₽</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:60%;">ПВП-3 (МКАД 15 км)</span><span class="mu-value">28 750 ₽</span></div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>📤 Экспорт</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-btn">📥 CSV (UTF-8 BOM)</span></div>
+          <div class="mu-row"><span class="mu-label">Фильтр:</span><span class="mu-value">▼ Последние 30 дней</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">20 / 22</div>
+</div>
+
+<!-- 21. INTERFACE: Payment Points -->
+<div class="slide">
+  <div class="content">
+    <h2>Интерфейс: ПВП, полосы и тарифы</h2>
+    <div class="subtitle" style="margin-bottom:6px;">Управление дорожной инфраструктурой</div>
+    <div style="display:flex; gap:8px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>🏢 Пункты оплаты</span><span class="mu-btn">+</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-value" style="width:50%;">ПВП-1 (МКАД, 32 км)</span><span class="mu-value">4 полосы</span><span class="mu-btn">🔧</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:50%;">ПВП-2 (М-4 Дон)</span><span class="mu-value">6 полос</span><span class="mu-btn">🔧</span></div>
+        </div>
+      </div>
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>🛣 Полосы: ПВП-1</span><span class="mu-btn">+</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-value" style="width:25%;">№1</span><span class="mu-value" style="width:35%;">Универсальная</span><span class="mu-value" style="width:20%;color:#34d399;">✓</span><span class="mu-btn" style="width:20%;">✎</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:25%;">№2</span><span class="mu-value" style="width:35%;">Легковая</span><span class="mu-value" style="width:20%;color:#34d399;">✓</span><span class="mu-btn" style="width:20%;">✎</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; margin-top:4px;">
+      <div class="mockup" style="flex:1;">
+        <div class="mu-header"><span>💰 Тарифы</span></div>
+        <div class="mu-body">
+          <div class="mu-row"><span class="mu-value" style="width:40%;">Легковой</span><span class="mu-value" style="width:30%;">150.00 ₽</span><span class="mu-btn">✎</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:40%;">Грузовой</span><span class="mu-value" style="width:30%;">300.00 ₽</span><span class="mu-btn">✎</span></div>
+          <div class="mu-row"><span class="mu-value" style="width:40%;">Автобус</span><span class="mu-value" style="width:30%;">200.00 ₽</span><span class="mu-btn">✎</span></div>
+        </div>
+      </div>
+      <div class="card" style="flex:1;">
+        <h3>Особенности</h3>
+        <ul>
+          <li>Привязка тарифа к типу ТС</li>
+          <li>Разные цены для разных типов</li>
+          <li>Гибкое управление полосами</li>
+          <li>Статус полосы: активна/закрыта</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">21 / 22</div>
+</div>
+
+<!-- 22. CONCLUSION -->
+<div class="slide">
+  <div class="content">
+    <h2>Заключение</h2>
+    <div class="subtitle" style="margin-bottom:10px;">Результаты выполнения курсовой работы</div>
+    <div style="display:flex; gap:12px;">
+      <div style="flex:1;">
+        <h3>Что реализовано</h3>
+        <ul>
+          <li>Миграция монолитного PHP-приложения (≈620 строк) на Laravel 10</li>
+          <li>Аутентификация с разграничением ролей (admin / driver)</li>
+          <li>Полный CRUD для всех 8 справочников через DataTables</li>
+          <li>Регистрация транзакций с авторасчётом тарифа</li>
+          <li>Автоматическое наложение штрафов (триггер БД)</li>
+          <li>Дашборд администратора с графиками Chart.js</li>
+          <li>Личный кабинет водителя с пополнением баланса</li>
+          <li>Экспорт статистики в CSV (UTF-8 BOM)</li>
+          <li>Docker-контейнеризация (PHP 8.2 + PG 16)</li>
+        </ul>
+      </div>
+      <div style="flex:1;">
+        <h3>Ключевые метрики</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px;">
+          <div style="text-align:center;"><div class="num-circle" style="width:40px;height:40px;font-size:18px;margin:0 auto 2px;">13</div><div class="small-text">Контроллеров</div></div>
+          <div style="text-align:center;"><div class="num-circle" style="width:40px;height:40px;font-size:18px;margin:0 auto 2px;">12</div><div class="small-text">Моделей</div></div>
+          <div style="text-align:center;"><div class="num-circle" style="width:40px;height:40px;font-size:18px;margin:0 auto 2px;">17</div><div class="small-text">Blade-шаблонов</div></div>
+          <div style="text-align:center;"><div class="num-circle" style="width:40px;height:40px;font-size:18px;margin:0 auto 2px;">12</div><div class="small-text">Таблиц в БД</div></div>
+        </div>
+        <h3 style="margin-top:8px;">Перспективы развития</h3>
+        <ul>
+          <li>Nginx + PHP-FPM для production</li>
+          <li>REST API для мобильного приложения</li>
+          <li>WebSocket-уведомления</li>
+          <li>Интеграция с платёжными шлюзами</li>
+          <li>PHPUnit + Dusk E2E-тесты</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">ПВП — Презентация</div>
+  <div class="page-num">22 / 22</div>
+</div>
+
+</body>
+</html>
